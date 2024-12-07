@@ -1,3 +1,4 @@
+import MealsGrid from "@components/meals-grid/MealsGrid";
 import Link from "next/link";
 import styles from "./meals.module.css";
 
@@ -12,7 +13,7 @@ export default function MealsPage() {
                 </p>
             </header>
             <main className={styles.main}>
-
+                <MealsGrid meals={[]} />
             </main>
         </>
     );
