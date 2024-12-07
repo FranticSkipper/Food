@@ -2,14 +2,27 @@ import Image from "next/image";
 import Link from "next/link";
 import LogoImage from "@assets/logo.png";
 import styles from "./header.module.css";
+import Navlink from "./navlink/Navlink";
+
+const routes = [
+    { id: 0, href: "/community", text: "Community" },
+    { id: 1, href: "/meals", text: "Meals" },
+];
 
 export default function Header() {
+
+    const routesToRender = routes.map(el => (
+        <li key={el.id}>
+            <Navlink href={el.href}>{el.text}</Navlink>
+        </li>
+    ))
+
     return (
         <header className={styles.header}>
 
             <div className={styles.logo}>
                 <Link href="/">
-                    <Image 
+                    <Image
                         src={LogoImage}
                         width={50}
                         height={50}
@@ -21,15 +34,7 @@ export default function Header() {
 
             <nav className={styles.nav}>
                 <ul>
-                    <li>
-                        <Link href="/community">Community</Link>
-                    </li>
-                    <li>
-                        <Link href="/meals">Meals</Link>
-                    </li>
-                    <li>
-                        <Link href="/meals/share">Share</Link>
-                    </li>
+                    {routesToRender}
                 </ul>
             </nav>
         </header>
